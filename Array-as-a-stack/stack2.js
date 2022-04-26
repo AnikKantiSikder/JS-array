@@ -14,4 +14,4 @@ while(!stack.isEmpty()) {
     reversedText += stack.pop();
 }
 
-console.log(reversedText);v
+console.log(reversedText);
