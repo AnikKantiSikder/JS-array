@@ -68,24 +68,85 @@
 
 // console.log(reducedFlatMap);
 
-const votes = [
-    'Java',
-    'Java',
-    'Python',
-    'Java',
-    'Javascript',
-    'Python',
-    'Javascript'
+// const votes = [
+//     'Java',
+//     'Java',
+//     'Python',
+//     'Java',
+//     'Javascript',
+//     'Python',
+//     'Javascript'
+// ];
+
+// const result = votes.reduce((acc, cur) =>{
+//     if (acc[cur]) {
+//         acc[cur]++;
+//     } else {
+//         acc[cur] = 1;
+//     }
+//     return acc;
+
+// }, {});
+
+// console.log(result);
+
+// Implementing my own reduce method
+// function myReduce(arr, cBack, init) {
+//     let acc = init;
+//     let start = 0;
+//     if(!init) {
+//         acc = arr[0];
+//         start = 1;
+//     }
+//     for (let i = start; i < arr.length; i++) {
+//         acc = cBack(acc, arr[i], i, arr);
+//     }
+//     return acc;
+// }
+
+// const arr = [1, 2, 3, 4, 5];
+
+// const sum = myReduce(arr, (acc,cur) => {
+//     return acc + cur;
+// })
+
+// console.log(sum);
+
+// Reduce right
+// const arr = [
+//     [1,2],
+//     [3,4],
+//     [5,6],
+//     [7,8]
+// ];
+
+// const result = arr.reduceRight((acc, cur) => {
+//     return acc.concat(cur);
+// }, []);
+
+// console.log(result);
+
+let products = [
+    {name: 'Introduction to algorithm', price: 350},
+    {name: 'Think like a programmer', price: 200},
+    {name: 'Data structure', price: 400},
+    {name: 'Introduction to algorithm', price: 350},
+    {name: 'Data structure', price: 400},
+    {name: 'Introduction to algorithm', price: 350}
 ];
 
-const result = votes.reduce((acc, cur) =>{
-    if (acc[cur]) {
-        acc[cur]++;
+const invoice = products.reduce((acc, cur) => {
+    if (acc[cur.name]) {
+        acc[cur.name].quantity++;
+        acc[cur.name].price += cur.price;
     } else {
-        acc[cur] = 1;
+        acc[cur.name] = {
+            price: cur.price,
+            quantity: 1
+        }
     }
     return acc;
+}, {})
 
-}, {});
+console.log(invoice);
 
-console.log(result);
